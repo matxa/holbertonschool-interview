@@ -14,6 +14,8 @@ def canUnlockAll(boxes):
     * Empty boxes don't have a key to open other boxes
     * Return True if all boxes can be opened, else return False
     """
+    if not boxes:
+        return False
     box_numbers = [num for num in range(1, len(boxes))]
     box_keys = []
     for index_of_box in range(1, len(boxes)):
