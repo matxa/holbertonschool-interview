@@ -19,6 +19,9 @@ def canUnlockAll(boxes):
     if len(boxes) == 1:
         if type(boxes[0]) != list:
             return False
+    for b in boxes:
+        if type(b) != list:
+                return False
     box_numbers = [num for num in range(1, len(boxes))]
     box_keys = []
     for index_of_box in range(1, len(boxes)):
