@@ -8,6 +8,8 @@ def minOperations(n):
     """Return the minimun number
     of operation
     """
+    if n <= 0:
+        return 0
     min_step = 0
     for i in range(2, n):
         while n % i == 0:
