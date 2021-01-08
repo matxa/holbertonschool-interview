@@ -8,7 +8,7 @@ def minOperations(n):
     """Return the minimun number
     of operation
     """
-    if n <= 0:
+    if n <= 1:
         return 0
     min_step = 0
     for i in range(2, n):
