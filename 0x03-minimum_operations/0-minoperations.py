@@ -1,13 +1,14 @@
 #!/usr/bin/python3
-"""
-minOperations algo file
-"""
+"""minOperations algo file"""
 
 
 def minOperations(n):
-    """Return the minimun number
-    of operation
     """
+    Find the minimum operations to get from 1 to n
+    using only 2 methods copy and paste.
+    """
+    if n < 2:
+        return 0
     min_step = 0
     for i in range(2, n):
         while n % i == 0:
