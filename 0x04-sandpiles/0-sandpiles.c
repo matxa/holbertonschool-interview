@@ -1,22 +1,24 @@
 #include "sandpiles.h"
 
 /**
- * print_grid - Print 3x3 grid
+ * printgrid - Print 3x3 grid
  * @grid: 3x3 grid
  *
  */
-void print_grid(int grid[3][3])
+void printgrid(int grid[3][3])
 {
 	int i, j;
 
 	for (i = 0; i < 3; i++)
+	{
 		for (j = 0; j < 3; j++)
 		{
 			if (j)
 				printf(" ");
 			printf("%d", grid[i][j]);
 		}
-	printf("\n");
+		printf("\n");
+	}
 }
 
 
@@ -96,7 +98,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	while (is_stable(grid1) != 1)
 	{
 		printf("=\n");
-		print_grid(grid1);
+		printgrid(grid1);
 		for (row = 0; row < 3; row++)
 			for (index = 0; index < 3; index++)
 			{
