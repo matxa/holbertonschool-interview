@@ -8,22 +8,28 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *reversed_list = *head;
+	listint_t *temp = *head;
+	listint_t *stack = malloc(sizeof(listint_t));
+
+	stack->n = temp->n;
+	stack->next = NULL;
 
 	if (head == NULL)
 		return (1);
 
-	reverse_listint(&reversed_list);
-
-	while ((*head) != NULL && reversed_list != NULL)
+	temp = temp->next;
+	while (temp != NULL)
 	{
-		if ((*head)->n != reversed_list->n)
-		{
-			printf("ORIG - %d <-> REV - %d\n", (*head)->n, reversed_list->n);
+		push(&stack, temp->n);
+		temp = temp->next;
+	}
+
+	while ((*head) != NULL && stack != NULL)
+	{
+		if ((*head)->n != stack->n)
 			return (0);
-		}
 		(*head) = (*head)->next;
-		reversed_list = reversed_list->next;
+		stack = stack->next;
 	}
 
 	return (1);
@@ -31,32 +37,16 @@ int is_palindrome(listint_t **head)
 
 
 /**
- * reverse_listint - reverse list
- * @head: - head
- * Return: list
+ * push - add node to head of list
+ * @head: head of the list
+ * @n: node value
  */
-listint_t *reverse_listint(listint_t **head)
+void push(listint_t **head, int n)
 {
-	listint_t *fir;
-	listint_t *res;
+	listint_t *new_node = malloc(sizeof(listint_t));
 
-	if (*head == NULL)
-		return (NULL);
+	new_node->n = n;
+	new_node->next = (*head);
 
-	fir = *head;
-	res = fir->next;
-
-	if (res == NULL)
-	{
-		return (NULL);
-	}
-
-	reverse_listint(&res);
-	fir->next->next = fir;
-
-	fir->next = NULL;
-
-	*head = res;
-
-	return (res);
+	(*head) = new_node;
 }
