@@ -8,7 +8,7 @@
  */
 int is_palindrome(listint_t **head)
 {
-	if (*head == NULL && head == NULL)
+	if (head == NULL && *head == NULL)
 		return (1);
 	else
 		return (check(head, *head));
@@ -26,7 +26,7 @@ int check(listint_t **left, listint_t *right)
 	if (right == NULL)
 		return (1);
 
-	if ((*left)->n == right->n && check(left, right->next))
+	if (check(left, right->next) && (*left)->n == right->n)
 	{
 		*left = (*left)->next;
 		return (1);
