@@ -8,45 +8,32 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *temp = *head;
-	listint_t *stack = malloc(sizeof(listint_t));
-
-	stack->n = temp->n;
-	stack->next = NULL;
-
-	if (head == NULL)
+	if (*head == NULL && head == NULL)
 		return (1);
-
-	temp = temp->next;
-	while (temp != NULL)
-	{
-		push(&stack, temp->n);
-		temp = temp->next;
-	}
-
-	while ((*head) != NULL && stack != NULL)
-	{
-		if ((*head)->n != stack->n)
-			return (0);
-		(*head) = (*head)->next;
-		stack = stack->next;
-	}
-
-	return (1);
+	else
+		return (check(head, *head));
 }
 
 
 /**
- * push - add node to head of list
- * @head: head of the list
- * @n: node value
+ * check - check
+ * @left: - **head
+ * @right: - *head
+ * Return: 1 if good else 0
  */
-void push(listint_t **head, int n)
+int check(listint_t **left, listint_t *right)
 {
-	listint_t *new_node = malloc(sizeof(listint_t));
+	if (right == NULL)
+		return (1);
 
-	new_node->n = n;
-	new_node->next = (*head);
+	if ((*left)->n == right->n && check(left, right->next))
+	{
+		*left = (*left)->next;
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 
-	(*head) = new_node;
 }
