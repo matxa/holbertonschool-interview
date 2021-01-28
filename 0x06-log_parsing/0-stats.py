@@ -44,5 +44,6 @@ try:
 
 except KeyboardInterrupt:
     parse_print()
+    raise
 except BrokenPipeError:
     pass
