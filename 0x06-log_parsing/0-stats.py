@@ -22,7 +22,7 @@ def parse_log(line):
     status_code = line[-2]
     global file_size
     file_size += eval(line[-1])
-    if type(eval(status_code)) == int and status_code in status_codes.keys():
+    if status_code in status_codes.keys():
         status_codes[status_code] += 1
 
 
