@@ -39,8 +39,7 @@ try:
     for line in stdin:
         if line_count % 10 == 0 and line_count != 0:
             parse_print()
-        if len(line) > 70:
-            parse_log(line)
+        parse_log(line)
         line_count += 1
 
 except KeyboardInterrupt:
