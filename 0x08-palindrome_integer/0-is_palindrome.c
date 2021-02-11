@@ -8,28 +8,21 @@
  */
 int is_palindrome(unsigned long n)
 {
-	if (n == reverse_num(n))
-		return (1);
+	unsigned long rev = 0;
+	unsigned long rem;
+	unsigned long ori_num;
 
-	return (0);
-}
+	ori_num = n;
 
-
-/**
- * reverse_num - reverse number
- * @n: integer
- * Return: reversed num
- */
-unsigned long reverse_num(unsigned long n)
-{
-	static int reverse_n = 0, rem;
-
-	if (n != 0)
+	while (n != 0)
 	{
 		rem = n % 10;
-		reverse_n = reverse_n * 10 + rem;
-		reverse_num(n / 10);
+		rev = rev * 10 + rem;
+		n /= 10;
 	}
 
-	return (reverse_n);
+	if (ori_num == rev)
+		return (1);
+	else
+		return (0);
 }

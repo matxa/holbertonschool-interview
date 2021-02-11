@@ -5,7 +5,5 @@
 #include <stdio.h>
 
 int is_palindrome(unsigned long n);
-unsigned long reverse_num(unsigned long n);
-
 
 #endif
