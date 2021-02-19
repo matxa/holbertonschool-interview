@@ -1,37 +1,28 @@
 #!/usr/bin/python3
-from itertools import takewhile
-
-
-def to_bits(bytes):
-    for byte in bytes:
-        num = []
-        exp = 1 << 8
-        while exp:
-            exp >>= 1
-            num.append(bool(byte & exp))
-        yield num
+"""Validate UTF-8"""
 
 
 def validUTF8(data):
-    bits = to_bits(data)
-    for byte in bits:
-        # single byte char
-        if byte[0] == 0:
-            continue
-
-        # multi-byte character
-        amount = sum(takewhile(bool, byte))
-        if amount <= 1:
+    """Return if valid
+    else return False
+    """
+    num_of_bytes = 0
+    for num in data:
+        num = num
+        if num_of_bytes == 0:
+            if num >= 0 and num <= 127:
+                continue
+            if num <= 223:
+                num_of_bytes += 1
+            if num <= 239:
+                num_of_bytes += 2
+            if num <= 255:
+                num_of_bytes += 3
             return False
-        if amount >= 4:
+        if num >= 128 and num <= 192:
+            num_of_bytes -= 1
+        else:
             return False
-
-        for _ in range(amount - 1):
-            try:
-                byte = next(bits)
-            except StopIteration:
-                return False
-            if byte[0:2] != [1, 0]:
-                return False
-
-    return True
+    if num_of_bytes == 0:
+        return True
+    return False
