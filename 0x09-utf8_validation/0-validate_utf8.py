@@ -14,13 +14,17 @@ def validUTF8(data):
                 continue
             if num <= 223:
                 num_of_bytes += 1
+                continue
             if num <= 239:
                 num_of_bytes += 2
+                continue
             if num <= 255:
                 num_of_bytes += 3
+                continue
             return False
         if num >= 128 and num <= 192:
             num_of_bytes -= 1
+            continue
         else:
             return False
     if num_of_bytes == 0:
