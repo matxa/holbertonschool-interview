@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 int slide_line(int *line, size_t size, int direction);
-void push_zeros_to_end(int arr[], size_t n);
-void push_zeros_to_start(int arr[], size_t n);
+void push_zeros_to_end(int *arr, size_t n);
+void push_zeros_to_start(int *arr, size_t n);
 
 #endif /* SLIDE_LINE_H */

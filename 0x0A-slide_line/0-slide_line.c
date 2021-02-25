@@ -46,7 +46,7 @@ int slide_line(int *line, size_t size, int direction)
  * @arr: array
  * @n: size of array
  */
-void push_zeros_to_end(int arr[], size_t n)
+void push_zeros_to_end(int *arr, size_t n)
 {
 	size_t count = 0;
 	size_t i;
@@ -64,7 +64,7 @@ void push_zeros_to_end(int arr[], size_t n)
  * @arr: array
  * @n: size of array
  */
-void push_zeros_to_start(int arr[], size_t n)
+void push_zeros_to_start(int *arr, size_t n)
 {
 	int i, j;
 
