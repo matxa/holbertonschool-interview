@@ -29,10 +29,10 @@ int slide_line(int *line, size_t size, int direction)
 		incrementor--;
 	}
 
-	if (direction == 1)
+	if (direction == SLIDE_LEFT)
 		return (1);
 
-	if (direction == 0)
+	if (direction == SLIDE_RIGHT)
 	{
 		push_zeros_to_start(line, size);
 		return (1);
