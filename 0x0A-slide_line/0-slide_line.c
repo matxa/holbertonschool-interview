@@ -12,7 +12,6 @@ int slide_line(int *line, size_t size, int direction)
 {
 	size_t prev;
 	size_t current;
-	size_t temp;
 	size_t incrementor;
 
 	if (size < 2)
@@ -26,7 +25,6 @@ int slide_line(int *line, size_t size, int direction)
 
 		if (line[current] == line[prev])
 		{
-			temp = line[prev];
 			line[current] = line[prev] + line[current];
 			line[prev] = 0;
 			push_zeros_to_end(line, size);
