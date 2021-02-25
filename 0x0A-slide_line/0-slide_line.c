@@ -14,9 +14,6 @@ int slide_line(int *line, size_t size, int direction)
 	size_t current;
 	size_t incrementor;
 
-	if (size < 2)
-		return (1);
-
 	incrementor = size - 1;
 	while (incrementor != 0)
 	{
