@@ -14,6 +14,9 @@ int slide_line(int *line, size_t size, int direction)
 	size_t current;
 	size_t incrementor;
 
+	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
+		return (0);
+
 	incrementor = size - 1;
 	while (incrementor != 0)
 	{
@@ -37,8 +40,6 @@ int slide_line(int *line, size_t size, int direction)
 		push_zeros_to_start(line, size);
 		return (1);
 	}
-
-	return (0);
 }
 
 /**
