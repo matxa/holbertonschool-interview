@@ -2,10 +2,9 @@
 """ Given a list of non-negative integers representing walls of width 1,
 calculate how much water will be retained after it rains.
 """
-from typing import List
 
 
-def rain(walls: List) -> int:
+def rain(walls):
     """
     Parameters:
         walls: ist of non-negative integers
