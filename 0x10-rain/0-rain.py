@@ -16,7 +16,7 @@ def rain(walls):
     walls_length = len(walls)
     max_water = 0
 
-    if walls is None or type(walls) != list:
+    if walls is None or type(walls) != List:
         return 0
     if walls == 0 or walls_length == 1:
         return 0
