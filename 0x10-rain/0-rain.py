@@ -2,7 +2,6 @@
 """ Given a list of non-negative integers representing walls of width 1,
 calculate how much water will be retained after it rains.
 """
-from typing import List
 
 
 def rain(walls):
@@ -16,7 +15,7 @@ def rain(walls):
     walls_length = len(walls)
     max_water = 0
 
-    if walls is None or type(walls) != List:
+    if walls is None:
         return 0
     if walls == 0 or walls_length == 1:
         return 0
