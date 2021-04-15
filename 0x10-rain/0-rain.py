@@ -10,13 +10,14 @@ def rain(walls):
         walls: ist of non-negative integers
 
     Returns:
-        int: indicating total amount of rainwater retained
+        int: total amount of rainwater collected
     """
+    if walls is None:
+        return 0
+
     walls_length = len(walls)
     max_water = 0
 
-    if walls is None:
-        return 0
     if walls == 0 or walls_length == 1:
         return 0
 
