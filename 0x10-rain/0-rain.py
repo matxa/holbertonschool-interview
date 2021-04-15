@@ -2,9 +2,10 @@
 """ Given a list of non-negative integers representing walls of width 1,
 calculate how much water will be retained after it rains.
 """
+from typing import List
 
 
-def rain(walls):
+def rain(walls: List) -> int:
     """
     Parameters:
         walls: ist of non-negative integers
@@ -13,16 +14,14 @@ def rain(walls):
         int: indicating total amount of rainwater retained
     """
     walls_length = len(walls)
+    max_water = 0
 
-    if walls_length < 1 or walls is None:
-        return 0
-
-    retained_water = 0
-    walls.sort()
-
-    for i in range(walls_length):
-        if i + 1 < walls_length:
-            if walls[i] > 0 and walls[i + 1] >= walls[i]:
-                retained_water += walls[i]
-
-    return retained_water
+    for i in range(1, walls_length - 1):
+        left = walls[i]
+        for j in range(i):
+            left = max(left, walls[j])
+        right = walls[i]
+        for j in range(i + 1, walls_length):
+            right = max(right, walls[j])
+        max_water = max_water + (min(left, right) - walls[i])
+    return max_water
