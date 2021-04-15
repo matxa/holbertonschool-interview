@@ -5,7 +5,7 @@ calculate how much water will be retained after it rains.
 from typing import List
 
 
-def rain(walls: List) -> int:
+def rain(walls):
     """
     Parameters:
         walls: ist of non-negative integers
@@ -15,6 +15,11 @@ def rain(walls: List) -> int:
     """
     walls_length = len(walls)
     max_water = 0
+
+    if walls is None or type(walls) != list:
+        return 0
+    if walls == 0 or walls_length == 1:
+        return 0
 
     for i in range(1, walls_length - 1):
         left = walls[i]
