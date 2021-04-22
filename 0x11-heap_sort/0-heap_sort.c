@@ -1,45 +1,67 @@
 #include "sort.h"
 
-void heapify(int *array, size_t n, size_t i)
+/**
+ * swap - swapping function
+ * @array: array to be printed
+ * @left: left value
+ * @right: right value
+ * @size: size of array
+ * Return: void
+ */
+void swap(int *left, int *right, int *array, size_t size)
 {
-	size_t largest = i;
-	size_t l = 2 * i + 1;
-	size_t r = 2 * i + 2;
-	int temp;
+	int temp = *left;
+	*left = *right;
+	*right = temp;
+	print_array(array, size);
+}
 
-	if (l < n && array[l] > array[largest])
-		largest = l;
+/**
+ * heapify - heapify function
+ * @array: array of numbers
+ * @h: h
+ * @b: b
+ * @size: size of array
+ * Return: void
+ */
+void heapify(int *array, int h, int b, size_t size)
+{
+	int biggest = b;
+	int left = 2 * b + 1;
+	int right = 2 * b + 2;
 
-	if (r < n && array[r] > array[largest])
-		largest = r;
+	if (left < h && array[left] > array[biggest])
+		biggest = left;
 
-	if (largest != i)
+	if (right < h && array[right] > array[biggest])
+		biggest = right;
+
+	if (biggest != b)
 	{
-		temp = array[i];
-		array[i] = array[largest];
-		array[largest] = temp;
-		heapify(array, n, largest);
+		swap(&array[b], &array[biggest], array, size);
+		heapify(array, h, biggest, size);
 	}
 }
 
+/**
+ * heap_sort - heap sort algorithm
+ * @array: array
+ * @size: size of array
+ * Return: void
+ */
 void heap_sort(int *array, size_t size)
 {
-	int i;
-	int temp;
+	size_t b;
 
-	for (i = size / 2 - 1; i >= 0; i--)
-	{
-		heapify(array, size, i);
-		print_array(array, size);
-	}
+	if (array == NULL)
+		return;
 
-	for (i = size - 1; i > 0; i--)
+	for (b = size / 2; b > 0; b--)
+		heapify(array, size, b - 1, size);
+
+	for (b = size - 1; b > 0; b--)
 	{
-		temp = array[0];
-		array[0] = array[i];
-		array[i] = temp;
-		print_array(array, size);
-		heapify(array, i, 0);
-		print_array(array, size);
+		swap(&array[0], &array[b], array, size);
+		heapify(array, b, 0, size);
 	}
 }

@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 void print_array(const int *array, size_t size);
-void heapify(int *array, size_t n, size_t i);
-void swap(int *x, int *y);
+void swap(int *left, int *right, int *array, size_t size);
+void swap(int *v, int *r, int *array, size_t x);
 void heap_sort(int *array, size_t size);
 
 #endif
