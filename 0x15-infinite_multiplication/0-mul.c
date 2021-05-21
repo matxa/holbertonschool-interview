@@ -29,7 +29,7 @@ void _error(void)
 }
 
 /**
- * check_args() - check input arguments
+ * check_args - check input arguments
  * @argc: argument count
  * @argv: argument vector
  * Return: VOID
@@ -38,7 +38,7 @@ void check_args(int argc, char **argv)
 {
 	int i;
 
-	if (argc < 3)
+	if (argc != 3)
 		_error();
 	else
 	{
