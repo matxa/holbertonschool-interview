@@ -89,12 +89,8 @@ void multiply(void)
 {
 	FILE *fp;
 	char c;
-	int pid = fork();
 
-	if (pid == 0)
-		execlp("./multiply.sh", "./multiply.sh", NULL);
-	else
-		wait(NULL);
+	system("bc -q output > answer");
 
 	fp = fopen("answer", "r");
 	if (fp == NULL)
