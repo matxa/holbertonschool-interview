@@ -25,6 +25,7 @@ int main(void)
 
     printf("-----------------\n");
 
+    insert_node(&head, 7);
     insert_node(&head, 0);
     insert_node(&head, 1);
     insert_node(&head, 2);
@@ -34,6 +35,8 @@ int main(void)
     insert_node(&head, 5);
     insert_node(&head, 1115);
     insert_node(&head, -1);
+    insert_node(&head, -21);
+    insert_node(&head, -11);
     insert_node(&head, 98);
     insert_node(&head, 1025);
     insert_node(&head, 1);

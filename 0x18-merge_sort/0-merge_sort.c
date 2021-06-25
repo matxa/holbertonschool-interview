@@ -1,6 +1,4 @@
-
 #include "sort.h"
-
 
 /**
  * printArray - prints segments of the array
