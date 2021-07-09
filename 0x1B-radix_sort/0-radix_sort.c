@@ -68,7 +68,7 @@ void sort_radix_helper(int *array_to_sort, size_t size, size_t significant_d)
 }
 
 /**
- * radix_sort - TASK 0. Redix sort
+ * radix_sort - Radix sort
  * @array: only integers greater than zero
  * @size: size of array
  */
