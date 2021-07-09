@@ -1,64 +1,86 @@
 #include "sort.h"
 
+
 /**
- * radix_sort - redix sort
- * @array: array
+ * sort_radix_helper - radix sort
+ * @array_to_sort: array to sort
  * @size: size of array
- * Return: VOID
- *
+ * @significant_d: significant digit
  */
-void radix_sort(int *array, size_t size)
+void sort_radix_helper(int *array_to_sort, size_t size, size_t significant_d)
 {
-	int bucket[10][10], bucket_cnt[10];
-	size_t i, j, k, r, NOP = 0, divisor = 1, lar, pass;
+	size_t index, temp_index = 0, curr_index = 0, digits[10] = {0};
+	int temp_modulo, curr_i, token, *at_index[10], div = significant_d / 10;
 
-	lar = get_max(array, size);
-
-	while (lar > 0)
+	while (temp_index < size)
 	{
-		NOP++;
-		lar /= 10;
+		temp_modulo = array_to_sort[temp_index] % significant_d;
+		curr_i = (temp_modulo) / (div);
+		digits[curr_i] = digits[curr_i] + 1;
+		temp_index++;
 	}
-
-	for (pass = 0; pass < NOP; pass++)
+	if (digits[0] == size)
 	{
-		for (i = 0; i < 10; i++)
+		return;
+	}
+	temp_index = 0; while (temp_index < 10)
+	{
+		at_index[temp_index] = malloc(digits[temp_index] * sizeof(int));
+		temp_index++;
+	}
+	temp_index = 0; while (temp_index < 10)
+	{
+		token = 0;
+		curr_index = 0;
+		while (curr_index < size)
 		{
-			bucket_cnt[i] = 0;
-		}
-		for (i = 0; i < size; i++)
-		{
-			r = (array[i] / divisor) % 10;
-			bucket[r][bucket_cnt[r]] = array[i];
-			bucket_cnt[r] += 1;
-		}
-		i = 0;
-		for (k = 0; k < 10; k++)
-		{
-			for (j = 0; j < (size_t)bucket_cnt[k]; j++)
+			index = array_to_sort[curr_index] % significant_d;
+			if (((index) / (div)) == temp_index)
 			{
-				array[i] = bucket[k][j];
-				i++;
+				at_index[temp_index][token] = array_to_sort[curr_index];
+				token++;
 			}
+		curr_index++;
 		}
-		divisor *= 10;
-		print_array(array, size);
+	temp_index++;
 	}
+	token = 0;
+	temp_index = 0;
+	while (temp_index < 10)
+	{
+		curr_index = 0;
+		while (curr_index < digits[temp_index])
+		{
+			array_to_sort[token] = at_index[temp_index][curr_index];
+			token++;
+			curr_index++;
+		}
+		temp_index++;
+	}
+	print_array((const int *)array_to_sort, size);
+	temp_index = 0;
+	while (temp_index < 10)
+	{
+		free(at_index[temp_index]);
+		temp_index++;
+	}
+	sort_radix_helper(array_to_sort, size, significant_d * 10);
 }
 
 /**
- * get_max - get max
- * @arr: array
- * @n: size
- * Return: int
+ * radix_sort - TASK 0. Redix sort
+ * @array: only integers greater than zero
+ * @size: size of array
  */
-int get_max(int arr[], size_t n)
+void radix_sort(int *array, size_t size)
 {
-	int max = arr[0];
-
-	for (size_t i = 1; i < n; i++)
-		if (arr[i] > max)
-			max = arr[i];
-
-	return (max);
+	if (size < 2)
+	{
+		return;
+	}
+	if (array == NULL)
+	{
+		return;
+	}
+	sort_radix_helper(array, size, 10);
 }

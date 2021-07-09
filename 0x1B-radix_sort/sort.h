@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 void radix_sort(int *array, size_t size);
-int get_max(int arr[], size_t n);
+void sort_radix_helper(int *array_to_sort, size_t size, size_t significant_d);
 void print_array(const int *array, size_t size);
 
 #endif
